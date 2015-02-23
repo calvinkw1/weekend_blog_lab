@@ -1,0 +1,30 @@
+<h1>Edit Post</h1>
+
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus: true %>
+
+  <%= f.label :body %>
+  <%= f.text_field :body %>
+
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+
+  <%= f.hidden_field :author_id, :value => @author.id %>
+
+  <%= f.submit %>
+<% end %>
+
+<% if @post.errors.any?%>
+  <% @post.errors.full_messages.each do |error|%>
+    <p class="text-danger">
+      <%= error %>
+    </p>
+    <% end%>
+  <% end%>
+
+<%= link_to "Delete Post", post_path, method:"Delete", data: { confirm: "Are you sure?!"} %>
+
+<p>
+  <%= link_to 'Back', { controller: "posts", action: "show" } %>
+</p>

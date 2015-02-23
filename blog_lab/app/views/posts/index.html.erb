@@ -1,0 +1,18 @@
+<h1>Showing all posts</h1>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+<% @posts.each do |post| %>
+  <h3><%= link_to post.title, post_path(post.id) %></h3>
+  <p><%= post.category %></p>
+<% end %>
+
+<p>
+  <%= link_to "Add New Post", new_author_post_path(@author.id) %>
+</p>
+
+<p>
+  <%= link_to 'Back to Author', author_path(@author.id) %>
+</p>

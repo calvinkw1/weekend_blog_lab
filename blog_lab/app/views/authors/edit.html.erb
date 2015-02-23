@@ -1,0 +1,28 @@
+<h1>Edit Author</h1>
+
+<%= form_for @author do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, autofocus: true %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :age %>
+  <%= f.text_field :age %>
+
+  <%= f.submit %>
+<% end %>
+
+<% if @author.errors.any?%>
+  <% @author.errors.full_messages.each do |error|%>
+    <p class="text-danger">
+      <%= error %>
+    </p>
+    <% end %>
+  <% end%>
+
+<%= link_to "Delete Author", author_path, method:"Delete", data: { confirm: "Are you sure?!"} %>
+
+<p>
+  <%= link_to 'Back to Author', author_path %>
+</p>

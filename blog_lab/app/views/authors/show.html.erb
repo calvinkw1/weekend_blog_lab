@@ -1,0 +1,29 @@
+<h1>Showing <%= @author.first_name %></h1>
+
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+<p>
+  Name: <%= @author.first_name %> <%= @author.last_name %>
+</p>
+
+<p>
+  Age: <%= @author.age %>
+</p>
+
+<p>
+  Created: <%= @author.created_at %>
+</p>
+<p>
+  Last Updated: <%= @author.updated_at %>
+</p>
+
+<%= link_to "Edit #{@author.first_name} #{@author.last_name}", edit_author_path %>
+
+<%= link_to "View Posts", author_posts_path(@author.id) %>
+
+
+<p>
+  <%= link_to 'Back to Authors', authors_path %>
+</p>
